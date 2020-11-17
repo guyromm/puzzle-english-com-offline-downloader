@@ -20,7 +20,7 @@ browser.runtime.onMessage.addListener(async function(m) {
 	else
 	{
 	    browser.runtime.sendMessage({message:'details',
-					 title:/(.+)"/.exec(document.querySelector('.info-download__title').textContent)[1],
+					 title:/"(.+)"/.exec(document.querySelector('.info-download__title').textContent)[1],
 					 url:location.href,
 					 videoDownloadLink:document.querySelector('#gr_mp4download').href
 					});
