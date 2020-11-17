@@ -1,0 +1,17 @@
+{"name": "my-extension",
+ "version":"0.0.0",
+ "manifest_version":2,
+ "description":"puzzle english urls collector",
+ "short_name":"puzzleeng",
+ "background":{
+     "scripts":["background.js"]
+ },
+ "content_scripts":[
+     {
+	 "matches":["https://puzzle-english.com/*"],
+	 "js":["contentscript.js"],
+	 "run_at":"document_end"
+     }
+ ],
+ "permissions":["<all_urls>"]
+}
