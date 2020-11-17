@@ -1,0 +1,37 @@
+* puzzle-english.com offline material downloader
+** usage scenario
+  if you're far up in the mountains and don't have a stable connection
+  but nevertheless really would like to have an edge over those
+  cypriots by brushing up on your english, comrade.
+- works through a hardcoded list of urls
+- requires a premium account for the video links!
+** moving parts
+   - ext/ :: chrome extension to automate the download of lesson text
+   - killprintwindow.sh :: kills the print window that keeps popping
+     up when traversing the urls
+   - urls.txt :: initial list of urls to download
+   -  :: 
+** prerequisites
+  - linux or something alike
+  - postgresql
+  - postgrest
+  - wmctrl
+  - youtube-dl
+** running
+*** initialize database schema & load list of urls
+    1. sudo -u postgres psql template1 -c 'create database puzzle_english'
+    2. psql puzzle_english < schema.sql
+    3. psql puzzle_english -c '\copy urls.txt into lessons...'
+*** install chrome extension to automate ::
+    1. cd ext && npm i && npm run dev chrome &&
+    2. google-chrome chrome://extensions <-- put it here
+*** run postgrest & print dialog killer
+    1. ./killprintwindow.sh
+    2. postgrest postgrest.conf
+*** sign into puzzle-english.com with a premium account
+    - enable the extension while with an open tab on the site  and watch it go bzzt
+    - psql puzzle_english -c 'select * from stats' -- to follow progress
+*** export the downloaded contents into a local directory.
+    1. ./writer.sh # this will also download the videos for local consumption
+
+
