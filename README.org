@@ -10,7 +10,8 @@
    - killprintwindow.sh :: kills the print window that keeps popping
      up when traversing the urls
    - urls.txt :: initial list of urls to download
-   -  :: 
+   - ./writer.sh :: once scrape is done we can write everything to disk 
+   - output/ :: the folder where ./writer.sh spits stuff out final consumables
 ** prerequisites
   - linux or something alike
   - postgresql
